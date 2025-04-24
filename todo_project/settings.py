@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qy&q67e3z#tlhok&+gdj($7(si_1q9fs9q*g59tord(k*t5c+$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['angelo182.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -121,3 +121,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+STATIC_ROOT = "/home/angelo182/minicurso_django/static"
+# or, eg,
+STATIC_ROOT = os.path.join(BASE_DIR, "static")

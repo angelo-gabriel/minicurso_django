@@ -1,19 +1,29 @@
-{% extends 'tasks/base.html' %} {% block title %}Lista de tarefas{% endblock %}
+{% extends 'tasks/base.html' %} {% block title %}Lista de Tarefas{% endblock %}
 {% block content %}
-<h2>Lista de Tarefas</h2>
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="mb-4">Lista de Tarefas</h2>
+  </div>
+  <div class="col-md-4 text-end">
+    <a href="{% url 'task_create' %}" class="btn btn-success">Nova Tarefa</a>
+  </div>
+</div>
 
 {% if tasks %}
-<ul>
+<div class="list-group">
   {% for task in tasks %}
-  <li>
-    <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
-    {% if task.completed %}
-    <span>(Concluída)</span>
+  <a
+    href="{% url 'task_detail' task.pk %}"
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+  >
+    {{ task.title }} {% if task.completed %}
+    <span class="badge bg-success rounded-pill">Concluída</span>
     {% endif %}
-  </li>
+  </a>
   {% endfor %}
-</ul>
-{% endif %}
-
-<a href="{% url 'task_create' %}">Criar Nova Tarefa</a>
-{% endblock %}
+</div>
+{% else %}
+<div class="alert alert-info">
+  <p class="mb-0">Não há tarefas cadastradas.</p>
+</div>
+{% endif %} {% endblock %}
